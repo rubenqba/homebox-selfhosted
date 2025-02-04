@@ -1,0 +1,21 @@
+volumes:
+  homebox-data:
+    external: true
+    name: ${INVENTORY_DATA_VOLUME:-homebox-data}
+
+networks:
+  proxy:
+    external: true
+    name: ${PROXY_NETWORK_NAME:-proxy}
+
+services:
+  homebox:
+    image: ghcr.io/hay-kot/homebox:latest
+    volumes:
+      - homebox-data:/data
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.checkrr.rule=Host(`${INVENTORY_HOSTANME}`)
+      - traefik.http.routers.checkrr.entrypoints=web
