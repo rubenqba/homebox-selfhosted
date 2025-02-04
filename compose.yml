@@ -19,5 +19,5 @@ services:
       - proxy
     labels:
       - traefik.enable=true
-      - traefik.http.routers.checkrr.rule=Host(`inventory.nas.local`)
-      - traefik.http.routers.checkrr.entrypoints=web
+      - traefik.http.routers.homebox.rule=Host(`inventory.nas.local`)
+      - traefik.http.routers.homebox.entrypoints=web
