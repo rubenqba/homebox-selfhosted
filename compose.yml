@@ -13,6 +13,8 @@ services:
     image: ghcr.io/hay-kot/homebox:latest
     volumes:
       - homebox-data:/data
+    environment:
+      - INVENTORY_HOSTNAME=${INVENTORY_HOSTNAME}
     networks:
       - proxy
     labels:
